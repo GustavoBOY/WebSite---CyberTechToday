@@ -53,9 +53,11 @@ input[type="submit"]:hover {
     margin-top: 50px;
     width: 300px;
     display: block;
+    background-color: aliceblue;
+    border-radius: 5px;
 }
 .social h3{
-    color: white;
+    color: black;
     padding: 10px;
 }
 ion-icon {
