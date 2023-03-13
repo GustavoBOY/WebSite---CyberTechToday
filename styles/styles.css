@@ -9,7 +9,7 @@
 html,
 body {
   height: 100%;
-  background: linear-gradient(to right, #524ff8, #0e9fff);
+  background: linear-gradient(to right, #4f47eb, #000000);
 }
 
 .navbar {
@@ -35,12 +35,13 @@ display: block;
 color: black;
 text-align: center;
 padding: 12px;
-font-size: 17px;
+font-size: 20px;
 text-decoration: none;
 }
 
 .navbar li a:hover {
-background-color: #C8CFDE;
+background: linear-gradient(to right, #625be2, #111e26);
+color: white;
 }
 
 
@@ -52,63 +53,95 @@ background-color: #C8CFDE;
 }
 .subTitle{
     margin-top: 10px;
+    font-size: 18px;
     color: #f1f1f1;
 }
 .title, .subTitle{
     text-align: center;
     justify-content: center;
 }
+.titleAll{
+  margin-top: 50px;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  font-size: 24px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-
+/*NOTICIAS*/
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 50px 0;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+.column {
+  height: 450px;
+  flex-basis: calc(50% - 10px);
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+}
+.column h2{
+  text-align: center;
+}
+
+.column img{
+  width: 250px;
+  max-height: 150px;
+}
+@media screen and (min-width: 768px) {
   .column {
-    flex-basis: 100%;
-    max-width: 600px;
-    padding: 20px;
-    background-color: #f8f8f8;
-    margin: 0 10px;
-    box-sizing: border-box;
+    flex-basis: calc(20% - 10px);
+    margin: 0 10px 10px;
   }
-  .column img{
-    width: 300px;
-    max-height: 150px;
-  }
-  
-  @media screen and (min-width: 768px) {
-    .column {
-      flex-basis: calc(25% - 20px);
-      margin: 0 10px 20px;
-    }
-  }
-  
-  h2 {
-    font-size: 22px;
-    margin-top: 0;
-  }
-  
-  p {
-    margin-top: 15px;
-    font-size: 16px;
-    line-height: 1.5;
-  }
+}
+h2 {
+  font-size: 22px;
+  margin-top: 0;
+}
+p {
+  margin-top: 15px;
+  font-size: 16px;
+  line-height: 1.5;
+}
 
-  footer{
-    position: absolute;
-    bottom: 0;
-    background-color: #F0F2F4;
-    
-    color: rgb(34, 33, 33);
-    text-align: center;
-    line-height: 30px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
-    width: 100%;
-    height: 30px;
-    
-  }
+/*CURIOSIDADES*/
+
+.curiosidades-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.curiosidade-coluna {
+  flex-basis: calc(50% - 10px);
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+.curiosidades-container{
+  padding-bottom: 5rem;
+}
+
+/*RODAPÉ*/
+
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 2rem;
+  background-color: #F0F2F4;
+  
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgb(34, 33, 33);
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+}

@@ -1,43 +1,28 @@
 <?php
-// Verifica se o formulário foi enviado
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    // Captura os dados do formulário
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
-
-    // Valida os dados
-    $errors = array();
-    if (empty($name)) {
-        $errors[] = 'O nome é obrigatório';
+function sendMail($de,$para,$mensagem,$assunto)
+{
+    require_once('phpmailer/class.phpmailer.php');
+    $mail = new PHPMailer(true);
+    $mail->IsSMTP();
+    try {
+      $mail->SMTPAuth   = true;
+      $mail->Host       = 'smtp.gmail.com';
+      $mail->SMTPSecure = "tls"; #remova se nao usar gmail
+     $mail->Port       = 587;                  #remova se nao usar gmail
+      $mail->Username   = 'contato@gmail.com';
+      $mail->Password   = '';
+      $mail->AddAddress($para);
+     $mail->AddReplyTo($de);
+     $mail->SetFrom($de);
+      $mail->Subject = $assunto;
+      $mail->MsgHTML($mensagem);
+      $mail->Send();    
+      $envio = true;
+    } catch (phpmailerException $e) {
+      $envio = false;
+    } catch (Exception $e) {
+      $envio = false;
     }
-    if (empty($email)) {
-        $errors[] = 'O e-mail é obrigatório';
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = 'O e-mail não é válido';
-    }
-    if (empty($subject)) {
-        $errors[] = 'O assunto é obrigatório';
-    }
-    if (empty($message)) {
-        $errors[] = 'A mensagem é obrigatória';
-    }
-
-    // Envia o e-mail se não houver erros
-    if (empty($errors)) {
-        $to = 'gustavoboy1702@gmail.com';
-        $headers = 'From: ' . $name . ' <' . $email . '>' . "\r\n";
-        $headers .= 'Reply-To: ' . $email . "\r\n";
-        $headers .= 'Content-Type: text/plain; charset=utf-8' . "\r\n";
-        $message = "Nome: $name\nE-mail: $email\nAssunto: $subject\nMensagem:\n$message";
-        mail($to, $subject, $message, $headers);
-        header('Location: index.html');
-        exit;
-    }
-} else {
-    header('Location: contact.html');
-    exit;
+    return $envio;
 }
 ?>
